@@ -1,0 +1,32 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto21
+    commands:
+      - echo "Instalando dependências..."
+      - mvn -version
+      - java -version
+
+  pre_build:
+    commands:
+      - echo "Compilando a aplicação..."
+      - mvn clean install -DskipTests
+
+  build:
+    commands:
+      - echo "Construindo a aplicação..."
+      - mvn package -DskipTests
+
+  post_build:
+    commands:
+      - echo "Empacotando a aplicação..."
+      - mkdir -p output
+      - cp target/*.jar output/
+      - echo "Build finalizado com sucesso!"
+
+artifacts:
+  files:
+    - 'output/*.jar'
+  discard-paths: yes
