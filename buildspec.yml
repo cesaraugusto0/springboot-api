@@ -6,25 +6,17 @@ phases:
       java: corretto21
     commands:
       - echo "Instalando dependências..."
-      - mvn -version
-      - java -version
+      - mvn clean install -DskipTests
 
   pre_build:
     commands:
-      - echo "Compilando a aplicação..."
-      - mvn clean install -DskipTests
-
+      - echo Pre-build phase
   build:
     commands:
-      - echo "Construindo a aplicação..."
-      - mvn package -DskipTests
-
+      - echo Build phase
   post_build:
     commands:
-      - echo "Empacotando a aplicação..."
-      - mkdir -p output
-      - cp target/*.jar output/
-      - echo "Build finalizado com sucesso!"
+      - echo Build completed on `date`
 
 artifacts:
   files:

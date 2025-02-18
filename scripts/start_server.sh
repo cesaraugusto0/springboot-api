@@ -17,7 +17,7 @@ sleep 2
 # Inicie o servidor
 echo "Iniciando o servidor na porta $PORT..."
 cd /home/ec2-user/app/
-java -jar output/*.jar > app.log 2>&1 &
+java -jar output/spring-0.0.1-SNAPSHOT.jar > app.log 2>&1 &
 if [ $? -eq 0 ]; then
     echo "Servidor iniciado. Verifique os logs em /home/ec2-user/app/app.log."
 else
