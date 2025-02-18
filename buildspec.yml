@@ -28,6 +28,4 @@ phases:
 
 artifacts:
   files:
-    - 'output/*.jar'
-    - 'scripts/*'
-  discard-paths: yes
+    - '**/*'
